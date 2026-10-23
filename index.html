@@ -27,7 +27,7 @@ button{font:inherit}
 .launch{margin-left:8px;font-size:12.5px;font-weight:600;letter-spacing:0;color:var(--blue);border:1px solid color-mix(in srgb,var(--blue) 35%,transparent);background:color-mix(in srgb,var(--blue) 7%,transparent);border-radius:999px;padding:5px 11px}
 .new{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:6px;padding:4px 8px;margin-bottom:10px}
 .right{display:flex;align-items:center;gap:18px;pointer-events:auto}
-.prog{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.prog{display:flex;align-items:center;gap:12px;white-space:nowrap;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 .prog b{color:var(--ink);font-weight:600}
 .bar{width:90px;height:2px;background:var(--line);position:relative;border-radius:2px;overflow:hidden}
 .bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);transition:width 2.4s cubic-bezier(.6,0,.2,1)}
@@ -107,8 +107,11 @@ h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-
   .kicker{margin-bottom:10px}
   .copy p{margin-top:12px}
   .rail,.film span{display:none}
-  .launch{font-size:11px;padding:4px 8px;margin-left:4px}
-  .launch span{display:none}
+  .launch{display:none}
+  h1{font-size:30px}
+  .copy p{font-size:14.5px}
+  .src{font-size:11.5px}
+  .stat b{font-size:34px}
   .bar{width:56px}
   .extra{margin-top:14px}
   .card{left:14px;right:14px;width:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 104px);padding:18px;border-radius:20px}
@@ -459,11 +462,11 @@ function init(){
   let ST, xKey, scanMin, scanMax;
   function build(){
     const M = mobile, EY = M ? 2.7 : 2.05;
-    camera.fov = M ? 62 : 48;
-    const E = s => new V(M ? 0 : EXD[s], EY, -s*STEP - 7);
-    const PP = s => new V(M ? -1.15 : -2.2, 0, -s*STEP + (M ? 0 : .5));
-    const CAM = s => M ? {p:new V(.5,2.75,-s*STEP+7.8), l:new V(0,2.5,-s*STEP-5)} : {p:new V(-.8,2.35,-s*STEP+5.8), l:new V(EXD[s]*.6,1.95,-s*STEP-4)};
-    const k = M ? .72 : 1;
+    camera.fov = M ? 56 : 48;
+    const E = s => new V(M ? 0 : EXD[s], EY, -s*STEP - (M ? 6 : 7));
+    const PP = s => new V(M ? -1.0 : -2.2, 0, -s*STEP + (M ? -1 : .5));
+    const CAM = s => M ? {p:new V(.45,2.6,-s*STEP+6), l:new V(0,2.35,-s*STEP-5)} : {p:new V(-.8,2.35,-s*STEP+5.8), l:new V(EXD[s]*.6,1.95,-s*STEP-4)};
+    const k = M ? .8 : 1;
     const net = (s, rot, mul, dz=0) => NET.map((v,i) => {
       const c = Math.cos(rot), si = Math.sin(rot), x = v.x*c - v.z*si, z = v.x*si + v.z*c, e = E(s);
       return {p:new V(e.x + x*mul*k, Math.max(.3, e.y + v.y*mul*k), e.z + z*mul + dz), s:1, b:i ? 0 : 1, h:0};
@@ -484,7 +487,7 @@ function init(){
     xKey = xs.map(x => (x - scanMin)/(scanMax - scanMin));
     const W = (w, kk) => {
       const e3 = E(3), e4 = E(4);
-      const wall = M ? new V((kk%2 - .5)*1.62, e3.y + 1.55 - Math.floor(kk/2)*.62, e3.z + 3) : new V(e3.x + (kk%4 - 1.5)*1.65, e3.y + (kk < 4 ? .38 : -.38), e3.z + 2.6);
+      const wall = M ? new V((kk%2 - .5)*1.62, e3.y + 1.55 - Math.floor(kk/2)*.62, e3.z + 2) : new V(e3.x + (kk%4 - 1.5)*1.65, e3.y + (kk < 4 ? .38 : -.38), e3.z + 2.6);
       const row = M ? new V((kk%4 - 1.5)*.86, e4.y + 2.75 - Math.floor(kk/4)*.34, e4.z - .6) : new V(e4.x + (kk - 3.5)*.95, e4.y + 1.75, e4.z - 1);
       if (w === 0) return {p:wall.clone().setY(wall.y - 2), s:1, o:0, c:0};
       if (w === 1) return {p:wall, s:M ? .92 : 1, o:1, c:0};
