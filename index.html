@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,10 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F7F8FA;--surface:#FFFFFF;--ink:#17191F;--muted:#747985;--line:#E5E7EB;--blue:#3355FF;--floor:#EEF0F4;--edge:#C3C8D2;--node:#FFFFFF;color-scheme:light;
+:root{--bg:#F7F8FA;--surface:#FFFFFF;--ink:#17191F;--muted:#747985;--line:#E5E7EB;--blue:#3355FF;--floor:#EEF0F4;--edge:#C3C8D2;--node:#2A2E37;color-scheme:light;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1116;--surface:#181B22;--ink:#F1F2F5;--muted:#9AA0AC;--line:#2A2E37;--blue:#5B76FF;--floor:#13151B;--edge:#454B57;--node:#3A404C;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0F1116;--surface:#181B22;--ink:#F1F2F5;--muted:#9AA0AC;--line:#2A2E37;--blue:#5B76FF;--floor:#13151B;--edge:#454B57;--node:#3A404C;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1116;--surface:#181B22;--ink:#F1F2F5;--muted:#9AA0AC;--line:#2A2E37;--blue:#5B76FF;--floor:#13151B;--edge:#454B57;--node:#D9DCE3;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1116;--surface:#181B22;--ink:#F1F2F5;--muted:#9AA0AC;--line:#2A2E37;--blue:#5B76FF;--floor:#13151B;--edge:#454B57;--node:#D9DCE3;color-scheme:dark}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Inter Tight",Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none;touch-action:none}
@@ -21,6 +21,8 @@ body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-fami
 button{font:inherit}
 .top{position:absolute;top:calc(env(safe-area-inset-top,0px) + 22px);left:clamp(20px,5vw,64px);right:clamp(20px,5vw,64px);display:flex;justify-content:space-between;align-items:center;transition:opacity .5s}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.02em}
+.top{z-index:2}
+.top::before{content:"";position:absolute;left:-80px;right:-80px;top:-60px;bottom:-26px;background:linear-gradient(var(--bg) 65%,transparent);z-index:-1}
 .logo{height:26px;width:auto;display:block}.logo.dk{display:none}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo.lt{display:none}:root:not([data-theme="light"]) .logo.dk{display:block}}
 :root[data-theme="dark"] .logo.lt{display:none}:root[data-theme="dark"] .logo.dk{display:block}
@@ -33,11 +35,11 @@ button{font:inherit}
 .bar i{position:absolute;inset:0 auto 0 0;background:var(--blue);transition:width 2.4s cubic-bezier(.6,0,.2,1)}
 .film{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 13px 7px 11px;font-size:13px;font-weight:500;cursor:pointer}
 .film:hover{border-color:var(--blue);color:var(--blue)}
-.copy{position:absolute;left:clamp(20px,5vw,64px);top:15vh;max-width:min(620px,84vw)}
+.copy{position:absolute;left:clamp(20px,5vw,64px);top:15vh;max-width:min(470px,84vw)}
 .kicker{display:flex;align-items:baseline;gap:12px;font-size:14px;color:var(--muted);font-weight:500;margin-bottom:18px}
 .kicker b{color:var(--blue);font-weight:700;font-variant-numeric:tabular-nums}
-h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:700}
-.copy p{margin-top:20px;font-size:clamp(16px,1.35vw,19px);line-height:1.45;color:var(--muted);max-width:440px}
+h1{font-size:clamp(32px,3.9vw,58px);line-height:.98;letter-spacing:-.045em;font-weight:700}
+.copy p{margin-top:20px;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:color-mix(in srgb,var(--ink) 78%,var(--bg));max-width:460px}
 .w{display:inline-block;white-space:pre;opacity:0;transform:translateY(.45em);filter:blur(8px);animation:rise .9s cubic-bezier(.2,.75,.2,1) forwards}
 @keyframes rise{to{opacity:1;transform:none;filter:none}}
 .copy.out{opacity:0;transform:translateY(-12px);transition:opacity .35s,transform .35s}
@@ -47,7 +49,7 @@ h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-
 .stat b{font-size:clamp(40px,4.4vw,60px);font-weight:700;letter-spacing:-.04em;color:var(--blue);font-variant-numeric:tabular-nums}
 .stat span{font-size:14px;color:var(--muted);max-width:150px;line-height:1.3}
 .src{font-size:12.5px;color:var(--muted);line-height:1.45;max-width:420px;border-left:2px solid var(--blue);padding-left:12px}
-.rail{position:absolute;left:clamp(20px,5vw,64px);bottom:calc(env(safe-area-inset-bottom,0px) + 34px);list-style:none;font-size:13px;color:var(--muted);display:grid;gap:7px;transition:opacity .5s}
+.rail{display:none;position:absolute;left:clamp(20px,5vw,64px);bottom:calc(env(safe-area-inset-bottom,0px) + 34px);list-style:none;font-size:13px;color:var(--muted);gap:7px;transition:opacity .5s}
 .rail li{display:flex;align-items:center;gap:10px;transition:color .4s}
 .rail li::before{content:"";width:8px;height:2px;background:var(--line);transition:width .5s,background .5s}
 .rail li.on{color:var(--ink);font-weight:600}
@@ -108,8 +110,11 @@ h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-
   .copy p{margin-top:12px}
   .rail,.film span{display:none}
   .launch{display:none}
+  .top{z-index:2}
+  .copy{z-index:1}
+  .copy::before{content:"";position:absolute;inset:-90px -20px -26px;background:linear-gradient(var(--bg) 72%,color-mix(in srgb,var(--bg) 0%,transparent));z-index:-1;pointer-events:none}
   h1{font-size:30px}
-  .copy p{font-size:14.5px}
+  .copy p{font-size:16px}
   .src{font-size:11.5px}
   .stat b{font-size:34px}
   .bar{width:56px}
@@ -121,6 +126,19 @@ h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-
   .nav button{width:64px;height:64px}
   .filming .copy{top:calc(8vh + 24px)}
 }
+html:root:root:root{--bg:#0B0D12;--surface:#14171E;--ink:#F3F4F7;--muted:#9AA0AC;--line:#262A33;--blue:#3355FF;--floor:#0E1016;--edge:#3A404C;--node:#D9DCE3;color-scheme:dark}
+.brand .logo.lt{display:none!important}.brand .logo.dk{display:block!important}
+.copy{z-index:1}
+.copy::before{content:"";position:absolute;inset:-120px -220px -120px -260px;background:radial-gradient(ellipse at 35% 50%,var(--bg) 40%,color-mix(in srgb,var(--bg) 70%,transparent) 58%,transparent 78%);z-index:-1;pointer-events:none}
+.card{box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.side{position:absolute;right:clamp(20px,4vw,64px);top:50%;width:290px;transform:translateY(-45%);opacity:0;transition:opacity .5s,transform .5s;pointer-events:none}
+.side.on{opacity:1;transform:translateY(-50%);transition:opacity .7s 1.2s,transform .7s 1.2s}
+.side h3{font-size:12px;font-weight:600;color:var(--blue);margin-bottom:14px;letter-spacing:.02em}
+.side ol,.side ul{list-style:none;display:grid;gap:10px}
+.side li{background:color-mix(in srgb,var(--surface) 85%,transparent);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.4;color:var(--ink)}
+.side li b{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-bottom:3px}
+.side li.gap{border-style:dashed;border-color:color-mix(in srgb,var(--blue) 60%,transparent)}
+@media (max-width:1100px),(max-aspect-ratio:9/10){.side{display:none}}
 </style>
 </head>
 <body class="pulse">
@@ -141,6 +159,7 @@ h1{font-size:clamp(36px,5.6vw,76px);line-height:.98;letter-spacing:-.045em;font-
     <div class="extra" id="extra"></div>
   </section>
   <ol class="rail" id="rail"></ol>
+  <aside class="side" id="side" aria-live="polite"></aside>
   <div id="tags"></div>
   <div class="info" id="info" role="dialog" aria-label="Component details">
     <button id="infoX" aria-label="Close details">×</button>
@@ -180,16 +199,16 @@ const CONFIG = {
 /* ============================================================================= */
 
 const STORY = [
-  {k:"The surface",      h:"You ship the application.",                 p:"But do you know what’s inside it?", extra:"launch"},
-  {k:"The hidden world", h:"One application. Many dependencies.",       p:"Libraries, packages, and the packages they pull in. Most of it, you never wrote.", extra:"stat"},
-  {k:"The unknowns",     h:"What you can’t see, you can’t verify.",     p:"Missing versions, licences, and suppliers leave gaps in your software inventory. Tap a dashed label."},
-  {k:"CERT-In",          h:"CERT-In has set the bar.",                  p:"Its technical guidelines list the minimum elements an SBOM should record for every component.", extra:"src"},
-  {k:"Clarity",          h:"Every component, accounted for.",           p:"Generate the SBOM. Check it against CERT-In’s minimum elements. Close the gaps."},
-  {k:"The launch",       h:"Introducing CERT-In SBOM Compliance.",      p:"A new Flyingduck module built around CERT-In’s SBOM guidelines. Know what’s inside your software."}
+  {k:"The application", h:"This is your application.",                 p:"Simple on the outside.", extra:"launch"},
+  {k:"What’s inside",   h:"Inside, it’s built from hundreds of parts.", p:"Open-source libraries, and the libraries they bring along."},
+  {k:"The gaps",        h:"Some parts are missing details.",            p:"No version, no licence, no supplier. Gaps like these make compliance checks harder."},
+  {k:"CERT-In",         h:"CERT-In expects the full picture.",          p:"Its SBOM guidelines list the details to record for every component.", extra:"src"},
+  {k:"Clarity",         h:"Every part. Every detail. One place.",       p:"Flyingduck’s new module checks your SBOM against CERT-In’s minimum elements."},
+  {k:"The launch",      h:"Introducing CERT-In SBOM Compliance.",       p:"Now on Flyingduck. Know what’s inside your software."}
 ];
 const FIELDS = ["Component name","Version","Supplier","Licence","Open source / proprietary","Checksum / hash","End-of-life date","Dependencies"];
 const N = 120, STEP = 10, LAST = STORY.length - 1;
-const UNKNOWN = [23,37,52,64,71,88,97,110];
+const UNKNOWN = [9,43,96,63,23,52,88,110];
 const SAMPLE = [
   {Component:"example-http-client", Version:"Unknown", Licence:"Not provided", Supplier:"acme-libs", Checksum:"Not provided"},
   {Component:"example-date-utils",  Version:"2.4.1",   Licence:"Not provided", Supplier:"Not provided", Checksum:"sha256:9f2c…"},
@@ -211,8 +230,8 @@ function setCopy(i, instant){
     $("p").innerHTML = `<span class="w" style="animation-delay:${reduced?0:500+STORY[i].h.split(" ").length*70}ms;white-space:normal">${STORY[i].p}</span>`;
     const ex = $("extra"); ex.className = "extra"; ex.innerHTML = "";
     if (STORY[i].extra === "stat") { ex.innerHTML = `<div class="stat"><b id="stat">0</b><span>components inside this example app</span></div>`; statStart = performance.now() + 900; }
-    if (STORY[i].extra === "launch") ex.innerHTML = `<div class="src"><b style="color:var(--ink)">New from Flyingduck:</b> the CERT-In SBOM Compliance module. Walk through to see why it matters.</div>`;
-    if (STORY[i].extra === "src") ex.innerHTML = `<div class="src">Source: CERT-In, Technical Guidelines on SBOM, QBOM & CBOM, AIBOM and HBOM (updated 9 July 2025). Fields shown are a selection.</div>`;
+    if (STORY[i].extra === "launch") ex.innerHTML = `<div class="src"><b style="color:var(--ink)">New from Flyingduck:</b> CERT-In SBOM Compliance. Press ↑ to see why it matters.</div>`;
+    if (STORY[i].extra === "src") ex.innerHTML = `<div class="src">Source: CERT-In Technical Guidelines on SBOM (updated 9 July 2025). Selected fields shown.</div>`;
     requestAnimationFrame(() => ex.classList.toggle("on", !!STORY[i].extra));
     c.classList.remove("out");
   };
@@ -228,6 +247,16 @@ function updateUI(){
   [...$("rail").children].forEach((li,i) => { li.className = i === cur ? "on" : i < cur ? "done" : ""; });
   $("card").classList.toggle("on", cur === LAST); $("card").setAttribute("aria-hidden", cur !== LAST);
   $("rail").style.opacity = cur === LAST ? 0 : 1;
+  const SIDE = [
+    ["In this walkthrough", [["01","The parts inside an app"],["02","Where details go missing"],["03","What CERT-In expects"],["04","How Flyingduck helps"]]],
+    ["Two kinds of dependencies", [["Direct","Libraries your team adds on purpose."],["Transitive","Libraries those libraries pull in, often without anyone noticing."]]],
+    ["Common gaps", [["","Version missing"],["","Licence missing"],["","Supplier missing"],["","Checksum missing"]], "gap"],
+    ["Why it matters", [["Consistency","Every component is described with the same minimum details."],["Verification","A complete SBOM can be reviewed and checked, not just trusted."]]],
+    ["The workflow", [["Step 1","Generate the SBOM"],["Step 2","Check it against CERT-In’s minimum elements"],["Step 3","Close the gaps"]]],
+    null];
+  const sd = $("side"), sc = SIDE[cur];
+  sd.classList.remove("on");
+  if (sc) { sd.innerHTML = `<h3>${sc[0]}</h3><ul>${sc[1].map(([b,t]) => `<li class="${sc[2]||""}">${b?`<b>${b}</b>`:""}${t}</li>`).join("")}</ul>`; requestAnimationFrame(() => requestAnimationFrame(() => sd.classList.add("on"))); }
   if (cur !== 2) $("info").classList.remove("on");
 }
 function go(d){
@@ -269,7 +298,7 @@ $("replay").onclick = () => restart();
 $("infoX").onclick = () => $("info").classList.remove("on");
 const tagEls = SAMPLE.map((d,k) => {
   const b = document.createElement("button"); b.className = "tag";
-  b.innerHTML = (d.Version === "Unknown" ? "version " : "licence ") + "<em>?</em>";
+  b.innerHTML = ["Version missing","Licence missing","Supplier missing","Checksum missing"][k];
   b.setAttribute("aria-label", "Show details for " + d.Component);
   b.onclick = () => { $("infoDl").innerHTML = Object.entries(d).map(([k,v]) => `<dt>${k}</dt><dd class="${/Unknown|Not provided/.test(v)?"miss":""}">${v}</dd>`).join(""); $("info").classList.add("on"); };
   $("tags").appendChild(b); return b;
@@ -317,29 +346,28 @@ function init(){
   /* gallery */
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(16,160), new THREE.MeshStandardMaterial({color:COL.floor, roughness:.55}));
   floor.rotation.x = -Math.PI/2; floor.position.z = -50; floor.receiveShadow = true; scene.add(floor);
-  const grid = new THREE.GridHelper(160, 160, COL.line, COL.line); grid.position.set(0,.002,-50); grid.material.transparent = true; grid.material.opacity = .55; scene.add(grid);
-  const wallMat = new THREE.MeshStandardMaterial({color:COL.surf, roughness:.95});
+  const grid = new THREE.GridHelper(160, 160, COL.line, COL.line); grid.position.set(0,.002,-50); grid.material.transparent = true; grid.material.opacity = .55;
+  const wallMat = new THREE.MeshStandardMaterial({color:COL.surf, emissive:COL.surf, emissiveIntensity:.6, roughness:.95});
   [-8,8].forEach(x => { const w = new THREE.Mesh(new THREE.PlaneGeometry(160,8), wallMat); w.position.set(x,4,-50); w.rotation.y = x<0?Math.PI/2:-Math.PI/2; w.receiveShadow = true; scene.add(w); });
-  const frameMat = new THREE.MeshStandardMaterial({color:COL.ink, roughness:.6});
+  const frameMat = new THREE.MeshStandardMaterial({color:COL.line, roughness:.6});
   const pg = new THREE.BoxGeometry(.07,5.8,.07), bgm = new THREE.BoxGeometry(11.6,.07,.07);
   for (let z = 3; z > -70; z -= STEP) {
     [-5.8,5.8].forEach(x => { const p = new THREE.Mesh(pg, frameMat); p.position.set(x,2.9,z); scene.add(p); });
     const b = new THREE.Mesh(bgm, frameMat); b.position.set(0,5.8,z); scene.add(b);
   }
   const path = new THREE.Mesh(new THREE.BoxGeometry(.03,.012,LAST*STEP+4), new THREE.MeshBasicMaterial({color:BLUE}));
-  scene.add(path);
   const rings = [];
-  for (let s = 0; s <= LAST; s++) { const r = new THREE.Mesh(new THREE.RingGeometry(.42,.46,48), new THREE.MeshBasicMaterial({color:BLUE, transparent:true})); r.rotation.x = -Math.PI/2; scene.add(r); rings.push(r); }
+  for (let s = 0; s <= LAST; s++) { const r = new THREE.Mesh(new THREE.RingGeometry(.42,.46,48), new THREE.MeshBasicMaterial({color:BLUE, transparent:true})); r.rotation.x = -Math.PI/2; rings.push(r); }
 
   /* dust */
   const DN = 260, dpos = new Float32Array(DN*3);
   for (let i = 0; i < DN; i++) dpos.set([(Math.random()-.5)*12, Math.random()*6, 8 - Math.random()*70], i*3);
   const dgeo = new THREE.BufferGeometry(); dgeo.setAttribute("position", new THREE.BufferAttribute(dpos,3));
-  scene.add(new THREE.Points(dgeo, new THREE.PointsMaterial({color:COL.edge, size:.035, transparent:true, opacity:.8})));
+  /* dust removed for a calmer scene */
 
   /* the monolith: 8 pieces that split open */
   const mono = new THREE.Group(); scene.add(mono);
-  const pieceMat = new THREE.MeshStandardMaterial({color:COL.surf, roughness:.3, transparent:true});
+  const pieceMat = new THREE.MeshStandardMaterial({color:COL.node, roughness:.3, transparent:true});
   const pieceEdgeMat = new THREE.LineBasicMaterial({color:COL.ink, transparent:true, opacity:.5});
   const pieceGeo = new THREE.BoxGeometry(1.08,1.08,1.08), pieceEdge = new THREE.EdgesGeometry(pieceGeo);
   const pieces = [];
@@ -359,30 +387,28 @@ function init(){
   const drawSign = () => { const x = signC.getContext("2d"); x.clearRect(0,0,1024,256);
     x.fillStyle = COL.surf; x.fillRect(0,0,1024,256); x.fillStyle = COL.blue; x.fillRect(0,0,10,256);
     x.font = `700 30px "Inter Tight", system-ui, sans-serif`; x.fillText("New from Flyingduck", 52, 82);
-    x.fillStyle = COL.ink; x.font = `700 76px "Inter Tight", system-ui, sans-serif`; x.fillText("CERT-In SBOM Compliance", 48, 176);
+    x.fillStyle = COL.ink; x.font = `700 62px "Inter Tight", system-ui, sans-serif`; x.fillText("CERT-In SBOM Compliance", 48, 172);
     signTex.needsUpdate = true; };
   drawSign(); document.fonts && document.fonts.ready.then(drawSign);
   const sign = new THREE.Mesh(new THREE.BoxGeometry(3.4,.85,.12), [0,1,2,3].map(() => new THREE.MeshStandardMaterial({color:COL.surf, transparent:true})).concat([new THREE.MeshBasicMaterial({map:signTex, transparent:true}), new THREE.MeshStandardMaterial({color:COL.surf, transparent:true})]));
   sign.castShadow = true; scene.add(sign);
 
   /* dependency nodes (instanced) */
-  const inst = new THREE.InstancedMesh(new THREE.BoxGeometry(.26,.26,.26), new THREE.MeshStandardMaterial({roughness:.35}), N);
+  const inst = new THREE.InstancedMesh(new THREE.BoxGeometry(.22,.22,.22), new THREE.MeshStandardMaterial({roughness:.45}), N);
   inst.castShadow = true; inst.instanceMatrix.setUsage(THREE.DynamicDrawUsage); scene.add(inst);
   const baseCol = [], sz = [], col = new THREE.Color(), dummy = new THREE.Object3D();
-  for (let i = 0; i < N; i++) { baseCol.push(i && i%6===0 ? INKC.clone() : NODE.clone()); sz.push(i === 0 ? 2.2 : 1); inst.setColorAt(i, baseCol[i]); }
+  for (let i = 0; i < N; i++) { baseCol.push(NODE.clone()); sz.push(i === 0 ? 2.2 : 1); inst.setColorAt(i, baseCol[i]); }
   const P = Array.from({length:N}, () => new V()), H = new Float32Array(N);
 
-  const NET = [new V()];
-  for (let i = 1; i < N; i++) {
-    const f = i/(N-1), y = 1 - 2*((i*.618034) % 1), rr = Math.sqrt(1-y*y), th = i*2.39996, r = .9 + 3.5*Math.sqrt(f);
-    NET.push(new V(Math.cos(th)*rr*r, y*r*.55, Math.sin(th)*rr*r*.7));
-  }
-  const rKey = NET.map(v => v.length()/4.5);
+  const NET = [new V()], RI = [0], RR = [0];
+  [[8,1.1],[24,2.0],[40,2.9],[47,3.8]].forEach(([n,r],k) => { for (let j = 0; j < n; j++) { const a = j/n*Math.PI*2 + k*.3;
+    NET.push(new V(Math.cos(a)*r, Math.sin(a)*r*.62, -k*.3)); RI.push(k+1); RR.push(r); } });
+  const rKey = RR.map(r => r/3.8);
   const netE = [];
   for (let i = 1; i < N; i++) {
-    let best = 0, bd = 1e9, li = NET[i].length();
-    for (let j = 0; j < i; j++) { if (NET[j].length() > li - .25) continue; const d = NET[j].distanceToSquared(NET[i]); if (d < bd) { bd = d; best = j; } }
-    netE.push([best,i]); if (i % 9 === 0) netE.push([i-1,i]);
+    let best = 0, bd = 1e9;
+    for (let j = 0; j < i; j++) { if (RI[j] !== RI[i] - 1) continue; const d = NET[j].distanceToSquared(NET[i]); if (d < bd) { bd = d; best = j; } }
+    netE.push([best,i]);
   }
   const gridE = [];
   for (let g = 0; g < 10; g++) { const o = g*12;
@@ -408,7 +434,7 @@ function init(){
   });
 
   /* packets flowing along edges */
-  const PK = 70, packets = new THREE.InstancedMesh(new THREE.SphereGeometry(.035,8,6), new THREE.MeshBasicMaterial({color:BLUE}), PK);
+  const PK = 22, packets = new THREE.InstancedMesh(new THREE.SphereGeometry(.035,8,6), new THREE.MeshBasicMaterial({color:BLUE}), PK);
   packets.instanceMatrix.setUsage(THREE.DynamicDrawUsage); scene.add(packets);
   const pk = Array.from({length:PK}, (_,i) => ({e:i*7, sp:.25 + Math.random()*.45, off:Math.random()}));
 
@@ -420,7 +446,7 @@ function init(){
     x.beginPath(); x.arc(58,104,22,0,Math.PI*2);
     if (chk) { x.fillStyle = COL.blue; x.fill(); x.strokeStyle = "#fff"; x.lineWidth = 5; x.beginPath(); x.moveTo(47,104); x.lineTo(55,113); x.lineTo(70,95); x.stroke(); }
     else { x.setLineDash([6,6]); x.strokeStyle = COL.edge; x.lineWidth = 3; x.stroke(); x.setLineDash([]); }
-    x.fillStyle = COL.ink; x.font = `600 ${name.length > 18 ? 32 : 40}px "Inter Tight", system-ui, sans-serif`; x.fillText(name, 100, 100);
+    x.fillStyle = COL.ink; x.font = `600 ${name.length > 20 ? 27 : name.length > 15 ? 33 : 40}px "Inter Tight", system-ui, sans-serif`; x.fillText(name, 100, 100);
     x.fillStyle = chk ? COL.blue : COL.muted; x.font = `500 24px "Inter Tight", system-ui, sans-serif`; x.fillText(chk ? "Recorded" : "Minimum element", 100, 140);
     const t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t;
   }
@@ -435,7 +461,7 @@ function init(){
   scanPlane.rotation.y = Math.PI/2; scan.add(scanPlane, scanEdge); scene.add(scan);
 
   /* the visitor */
-  const person = new THREE.Group(); scene.add(person);
+  const person = new THREE.Group();
   const skin = new THREE.MeshStandardMaterial({color:COL.surf === "#FFFFFF" ? "#FFFFFF" : "#D9DCE3", roughness:.5});
   const dark = new THREE.MeshStandardMaterial({color:"#2B2F38", roughness:.7});
   const blueM = new THREE.MeshBasicMaterial({color:BLUE});
@@ -458,48 +484,48 @@ function init(){
   body.add(torso, shoulders, pelvis, neck, head, spine, badge, legL, legR, armL, armR);
 
   /* ---------- states ---------- */
-  const EXD = [1.4,1.4,1.4,1.1,1.0,.2];
+  const EXD = [1.6,1.8,2.2,2.2,1.8,1.1];
   let ST, xKey, scanMin, scanMax;
   function build(){
-    const M = mobile, EY = M ? 2.7 : 2.05;
-    camera.fov = M ? 56 : 48;
+    const M = mobile, EY = M ? 2.7 : 2.5;
+    camera.fov = M ? 56 : 42;
     const E = s => new V(M ? 0 : EXD[s], EY, -s*STEP - (M ? 6 : 7));
     const PP = s => new V(M ? -1.0 : -2.2, 0, -s*STEP + (M ? -1 : .5));
-    const CAM = s => M ? {p:new V(.45,2.6,-s*STEP+6), l:new V(0,2.35,-s*STEP-5)} : {p:new V(-.8,2.35,-s*STEP+5.8), l:new V(EXD[s]*.6,1.95,-s*STEP-4)};
-    const k = M ? .8 : 1;
+    const CAM = s => M ? {p:new V(.45,2.6,-s*STEP+6), l:new V(0,2.35,-s*STEP-5)} : {p:new V(-.3,2.5,-s*STEP+5), l:new V(EXD[s]*.6,2.45,-s*STEP-4)};
+    const k = M ? .55 : 1;
     const net = (s, rot, mul, dz=0) => NET.map((v,i) => {
       const c = Math.cos(rot), si = Math.sin(rot), x = v.x*c - v.z*si, z = v.x*si + v.z*c, e = E(s);
       return {p:new V(e.x + x*mul*k, Math.max(.3, e.y + v.y*mul*k), e.z + z*mul + dz), s:1, b:i ? 0 : 1, h:0};
     });
     const L0 = NET.map(() => ({p:E(0), s:0, b:0, h:0}));
     const L1 = net(1, 0, 1);
-    const L2 = net(2, .5, 1.08).map((o,i) => UNKNOWN.includes(i) ? {...o, h:1} : o);
-    const L3 = net(3, .9, .8, -3.5).map((o,i) => UNKNOWN.includes(i) ? {...o, h:1} : o);
+    const L2 = net(2, 0, 1.05).map((o,i) => UNKNOWN.includes(i) ? {...o, h:1} : o);
+    const L3 = net(3, 0, .55, -7).map(o => ({...o, s:0}));
     const L4 = NET.map((_,i) => {
       const g = Math.floor(i/12), m = i%12, c = m%4, r = Math.floor(m/4), e = E(4);
-      const gx = M ? (g%2 - .5)*1.35 : (g%5 - 2)*1.7, gy = M ? (2 - Math.floor(g/2))*.92 - .2 : (g < 5 ? .75 : -.75), sp = M ? .26 : .3;
-      return {p:new V(e.x + gx + (c-1.5)*sp, e.y + gy + (1-r)*sp, e.z - 1), s:1, b:UNKNOWN.includes(i) ? 1 : 0, h:0};
+      const gx = M ? (g%2 - .5)*1.35 : (g%5 - 2)*1.3, gy = M ? (2 - Math.floor(g/2))*.82 - .75 : (g < 5 ? .75 : -.75), sp = M ? .26 : .25;
+      return {p:new V(e.x + gx + (c-1.5)*sp, e.y + gy + (1-r)*sp, e.z - 1), s:i ? 1 : .45, b:UNKNOWN.includes(i) ? 1 : 0, h:0};
     });
     const L5 = NET.map((_,i) => { const e = E(5);
-      return {p:new V(e.x + (i%6 - 2.5)*.33, e.y + (Math.floor(i/6)%5 - 2)*.33, e.z + (Math.floor(i/30) - 1.5)*.33), s:.82, b:UNKNOWN.includes(i) ? 1 : 0, h:0};
+      return {p:new V(e.x + (i%6 - 2.5)*.33, e.y + (Math.floor(i/6)%5 - 2)*.33, e.z + (Math.floor(i/30) - 1.5)*.33), s:i ? .82 : .37, b:UNKNOWN.includes(i) ? 1 : 0, h:0};
     });
     const xs = L4.map(o => o.p.x); scanMin = Math.min(...xs) - 1; scanMax = Math.max(...xs) + 1;
     xKey = xs.map(x => (x - scanMin)/(scanMax - scanMin));
     const W = (w, kk) => {
       const e3 = E(3), e4 = E(4);
-      const wall = M ? new V((kk%2 - .5)*1.62, e3.y + 1.55 - Math.floor(kk/2)*.62, e3.z + 2) : new V(e3.x + (kk%4 - 1.5)*1.65, e3.y + (kk < 4 ? .38 : -.38), e3.z + 2.6);
-      const row = M ? new V((kk%4 - 1.5)*.86, e4.y + 2.75 - Math.floor(kk/4)*.34, e4.z - .6) : new V(e4.x + (kk - 3.5)*.95, e4.y + 1.75, e4.z - 1);
+      const wall = M ? new V((kk%2 - .5)*1.62, e3.y + .95 - Math.floor(kk/2)*.56, e3.z + 2) : new V(e3.x + (kk%4 - 1.5)*1.78, e3.y + (kk < 4 ? -.1 : -.95), e3.z + 2.6);
+      const row = M ? new V((kk%4 - 1.5)*.86, e4.y + 2.2 - Math.floor(kk/4)*.34, e4.z - .6) : new V(e4.x + (kk - 3.5)*.8, e4.y + 1.55, e4.z - 1);
       if (w === 0) return {p:wall.clone().setY(wall.y - 2), s:1, o:0, c:0};
-      if (w === 1) return {p:wall, s:M ? .92 : 1, o:1, c:0};
-      if (w === 2) return {p:row, s:M ? .52 : .58, o:1, c:1};
+      if (w === 1) return {p:wall, s:M ? .85 : 1, o:1, c:0};
+      if (w === 2) return {p:row, s:M ? .52 : .5, o:1, c:1};
       return {p:row.clone().setY(row.y + 2), s:.5, o:0, c:1};
     };
     const wallS = [0,0,0,1,2,3];
     ST = [L0,L1,L2,L3,L4,L5].map((n,s) => ({
       n, E:E(s), pp:PP(s), cam:CAM(s),
       cube:[{sp:0,o:1},{sp:3,o:0},{sp:4,o:0},{sp:4,o:0},{sp:4,o:0},{sp:4,o:0}][s],
-      glass:[0,0,0,0,0,1][s], net:[0,.75,.6,.3,0,0][s], grid:[0,0,0,0,.75,.18][s], brk:[0,0,1,1,0,0][s],
-      chaos:[1,1,1,1,0,0][s], glow:[0,1.6,.6,.5,1.2,1.8][s], yaw:s === LAST ? 2.55 : 0,
+      glass:[0,0,0,0,0,1][s], net:[0,.55,.45,0,0,0][s], grid:[0,0,0,0,.5,.12][s], brk:[0,0,1,1,0,0][s],
+      chaos:[1,1,1,1,0,0][s], glow:[0,.7,.3,.3,.5,.9][s], yaw:s === LAST ? 2.55 : 0,
       panels:FIELDS.map((_,kk) => W(wallS[s], kk))
     }));
   }
@@ -519,17 +545,17 @@ function init(){
       const key = organize ? (dir > 0 ? xKey[i] : 1 - xKey[i]) : rKey[i];
       const ti = ease(clamp((t - key*.45)/.55)), x = A.n[i], y = B.n[i];
       const s = lerp(x.s, y.s, ti), h = lerp(x.h, y.h, ti), chaos = lerp(A.chaos, B.chaos, ti);
-      P[i].lerpVectors(x.p, y.p, ti); P[i].y += Math.sin(T*.9 + i*1.7)*.06*chaos; H[i] = h;
-      dummy.position.copy(P[i]); dummy.rotation.set((T*.3 + i)*chaos, (T*.4 + i*.5)*chaos, 0);
-      dummy.scale.setScalar(Math.max(.0001, s*(1-h)*sz[i]*(0.9 + .1*Math.sin(T*2 + i)))); dummy.updateMatrix(); inst.setMatrixAt(i, dummy.matrix);
+      P[i].lerpVectors(x.p, y.p, ti); P[i].y += Math.sin(T*.6 + i*1.7)*.025*chaos; H[i] = h;
+      dummy.position.copy(P[i]); dummy.rotation.set(i*.7*chaos, i*.5*chaos, 0);
+      dummy.scale.setScalar(Math.max(.0001, s*(1-h)*sz[i])); dummy.updateMatrix(); inst.setMatrixAt(i, dummy.matrix);
       col.copy(baseCol[i]).lerp(BLUE, lerp(x.b, y.b, ti)); inst.setColorAt(i, col);
     }
     inst.instanceMatrix.needsUpdate = true; inst.instanceColor.needsUpdate = true;
 
     /* unknown ghosts */
     UNKNOWN.forEach((u,k) => { const g = ghosts[k]; g.visible = H[u] > .01; if (!g.visible) return;
-      g.position.copy(P[u]); g.rotation.y = T*.5 + k; const fl = Math.sin(T*11 + k*3) > .55 ? .35 : 1;
-      g.material.opacity = H[u]*fl; g.children[0].material.opacity = H[u]*(.6 + .4*Math.sin(T*3 + k)); });
+      g.position.copy(P[u]); g.rotation.y = k; const fl = 1;
+      g.material.opacity = H[u]*fl; g.children[0].material.opacity = H[u]; });
 
     /* lines */
     const netO = lerp(A.net, B.net, te), gridO = lerp(A.grid, B.grid, te), brk = lerp(A.brk, B.brk, te);
@@ -569,12 +595,12 @@ function init(){
       m.scale.setScalar(lerp(pa.s, pb.s, tk)); m.material.opacity = lerp(pa.o, pb.o, tk); m.visible = m.material.opacity > .01;
       const scanned = organize && dir > 0 && b === 4 ? (t > .25 + k*.07) : lerp(pa.c, pb.c, tk) > .5;
       const want = scanned ? m.userData.c : m.userData.u; if (m.material.map !== want) { m.material.map = want; m.material.needsUpdate = true; }
-      m.rotation.y = Math.sin(T*.5 + k)*.03; });
+      m.rotation.y = 0; });
 
     /* scan sweep */
     let sx = null, so = 0;
     if (anim && organize) { sx = dir > 0 ? lerp(scanMin, scanMax, t) : lerp(scanMax, scanMin, t); so = Math.sin(Math.PI*t); }
-    else if (!anim && cur === 4) { sx = scanMin + ((T/4) % 1)*(scanMax - scanMin); so = .5; }
+    else if (!anim && cur === 4) { sx = scanMin + ((T/4) % 1)*(scanMax - scanMin); so = .2; }
     scan.visible = sx !== null; if (scan.visible) { scan.position.set(sx, ST[4].E.y, ST[4].E.z - 1); scanPlane.material.opacity = .1*so; scanEdge.material.opacity = so; }
 
     glow.position.copy(mono.position).add(tmp2.set(0,0,1.5)); glow.intensity = lerp(A.glow, B.glow, te)*(1 + .15*Math.sin(T*1.5));
@@ -597,8 +623,8 @@ function init(){
 
     /* camera */
     camP.lerpVectors(A.cam.p, B.cam.p, te); look.lerpVectors(A.cam.l, B.cam.l, te);
-    if (anim) { const arc = Math.sin(Math.PI*t); camP.x += arc*1.3*dir; camP.y += arc*.6; }
-    camP.x += Math.sin(T*.3)*.07 + pointer.x*.5; camP.y += Math.sin(T*.23)*.05 - pointer.y*.25;
+    if (anim) { const arc = Math.sin(Math.PI*t); camP.x += arc*.5*dir; camP.y += arc*.3; }
+    camP.x += Math.sin(T*.3)*.03 + pointer.x*.2; camP.y += Math.sin(T*.23)*.02 - pointer.y*.1;
     if (intro) { const it = ease(Math.min(1, (now - intro.start)/3400)); tmp.set(4, 9, 18); tmp2.set(0,.5,-30);
       camP.lerpVectors(tmp, camP, it); look.lerpVectors(tmp2, look, it); if (it >= 1) intro = null; }
     camera.position.copy(camP); camera.lookAt(look);
